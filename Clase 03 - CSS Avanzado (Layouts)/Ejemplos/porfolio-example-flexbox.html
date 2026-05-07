@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      color: white;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;    
+      height: 300px;
+      background: #f4f4f4;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .proyectos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .proyectos article {
+      flex: 1 1 250px;
+      background: #eee;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    .proyectos article:hover {
+      transform: scale(1.05);
+    }
+
+    .sobre-mi {
+      display: flex;
+      gap: 10px;
+      padding: 40px;
+      background: #fafafa;
+      flex-wrap: wrap;
+    }
+
+    .sobre-mi div {
+      flex: 1;
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #333;
+      color: white;
+      height: 80px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mi Portfolio</h1>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Proyectos</a>
+      <a href="#">Sobre mí</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Hola, soy Víctor 👋</h2>
+    <p>Desarrollador .NET | Web | APIs</p>
+  </section>
+
+  <section class="proyectos">
+    <article>
+      <h3>Proyecto 1</h3>
+      <p>Descripción breve del proyecto.</p>
+    </article>
+
+    <article>
+      <h3>Proyecto 2</h3>
+      <p>Descripción breve del proyecto.</p>
+    </article>
+
+    <article>
+      <h3>Proyecto 3</h3>
+      <p>Descripción breve del proyecto.</p>
+    </article>
+
+    <article>
+      <h3>Proyecto 4</h3>
+      <p>Descripción breve del proyecto.</p>
+    </article>
+  </section>
+
+  <section class="sobre-mi">
+    <div>
+      <h2>Sobre mí</h2>
+      <p>Soy desarrollador apasionado por crear aplicaciones web y APIs eficientes.</p>
+    </div>
+    <div>
+      <h2>Skills</h2>
+      <ul>
+        <li>.NET</li>
+        <li>HTML & CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 - Mi Portfolio</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Posicionamiento CSS</title>
+
+    <style>
+        body {
+            height: 2000px;
+            font-family: Arial;
+        }
+
+        .container {
+            position: relative;
+            border: 3px solid black;
+            padding: 20px;
+            margin: 50px;
+            height: 400px;
+        }
+
+        .static {
+            position: static;
+            background: lightgray;
+        }
+
+        .relative {
+            position: relative;
+            top: 20px;
+            left: 20px;
+            background: lightblue;
+        }
+
+        .absolute {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: lightcoral;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: yellow;
+            padding: 10px;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            background: lightgreen;
+            padding: 10px;
+        }
+
+        .box {
+            padding: 15px;
+            margin: 10px;
+            border: 2px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <p class="fixed">FIXED (Siempre visible)</p>
+
+    <p class="sticky">STICKY (Se pega arriba al hacer scroll)</p>
+
+    <div class="container">
+        <p class="box static">STATIC (posición normal)</p>
+
+        <p class="box relative">
+            RELATIVE (se mueve respecto a su posición original)
+        </p>
+
+        <p class="box absolute">
+            ABSOLUTE (posicionado respecto al contenedor)
+        </p>
+    </div>
+
+</body>
+
+</html>
