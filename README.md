@@ -30,10 +30,10 @@ Clase XX - Nombre del Tema/
 
 | Clase | Tema | Fecha | Grabación |
 |-------|------|-------|-----------|
-| 01 | Introducción y HTML | - | ✅ |
-| 02 | HTML Semántico y CSS Básico | - | ✅ |
-| 03 | CSS Avanzado (Layouts) | - | ✅ |
-| 04 | CSS Responsive y JavaScript Intro | - | ✅ |
+| 01 | Introducción y HTML | 04/05/2026 | ✅ |
+| 02 | HTML Semántico y CSS Básico | 05/05/2026 | ✅ |
+| 03 | CSS Avanzado (Layouts) | 07/05/2026 | ✅ |
+| 04 | CSS Responsive y JavaScript Intro | 11/05/2026 | ✅ |
 
 ## 🚀 Cómo Usar Este Repositorio
 
