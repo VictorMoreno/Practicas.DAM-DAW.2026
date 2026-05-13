@@ -21,6 +21,7 @@ Clase XX - Nombre del Tema/
 ```
 
 ### Contenido de cada carpeta:
+
 - **Enlace de la grabación.txt**: URL de la grabación de la sesión
 - **Apuntes.md**: Resumen y notas de la clase
 - **Ejemplos/**: Código y ejemplos prácticos
@@ -36,6 +37,11 @@ Clase XX - Nombre del Tema/
 | 04 | CSS Responsive y JavaScript Intro | 11/05/2026 | ✅ |
 | 05 | JavaScript Fundamentos | 12/05/2026 | ✅ |
 | 06 | JavaScript DOM y Eventos | 13/05/2026 | ✅ |
+| 07 | JavaScript APIs y Asincronía | 14/05/2026 | ✅ |
+
+## 📹 Información de videos
+
+La ruta donde podreis encontrar los videos de las sesiones es [Videos](https://accojali3-my.sharepoint.com/:f:/r/personal/victor_moreno_cojali_com/Documents/DAW-DAM%202026?csf=1&web=1&e=uLaiXI) ademas en los enlaces de cada practica indicare el acceso directo a cada video.
 
 ## 🚀 Cómo Usar Este Repositorio
 

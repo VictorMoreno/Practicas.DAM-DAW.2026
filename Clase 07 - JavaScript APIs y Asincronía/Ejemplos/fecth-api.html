@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Fetch API - Ejemplo Tiempo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modern {
+            background: #22c55e;
+            color: white;
+        }
+
+        .old {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #0b1220;
+            border-radius: 8px;
+            min-height: 60px;
+            text-align: left;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>API del Tiempo</h1>
+
+    <div class="container">
+        <p>Ejemplo Fetch API (moderno vs antiguo)</p>
+
+        <button class="modern" onclick="obtenerTiempoModern()">Async / Await</button>
+        <button class="old" onclick="obtenerTiempoOld()">.then()</button>
+
+        <div id="resultado" class="result">
+            Resultado aparecerá aquí...
+        </div>
+    </div>
+
+    <script>
+        const URL =
+            "https://api.open-meteo.com/v1/forecast?latitude=40.42&longitude=-3.70&current_weather=true";
+
+        async function obtenerTiempoModern() {
+            const result = document.getElementById("resultado");
+            result.textContent = "Cargando (async/await)...";
+
+            try {
+                const response = await fetch(URL);
+                const data = await response.json();
+
+                result.textContent =
+                    "MODERNO (async/await)\n\n" +
+                    JSON.stringify(data.current_weather, null, 2);
+            } catch (error) {
+                result.textContent = "Error: " + error;
+            }
+        }
+
+        function obtenerTiempoOld() {
+            const result = document.getElementById("resultado");
+            result.textContent = "Cargando (.then)...";
+
+            fetch(URL)
+                .then((response) => response.json())
+                .then((data) => {
+                    result.textContent =
+                        "ANTIGUO (.then)\n\n" +
+                        JSON.stringify(data.current_weather, null, 2);
+                })
+                .catch((error) => {
+                    result.textContent = "Error: " + error;
+                });
+        }
+    </script>
+
+</body>
+
+</html>
