@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Dinámico</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+        }
+
+        .filter-btn {
+            background: #ddd;
+        }
+
+        .filter-btn:hover {
+            background: #ccc;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        form button {
+            background: #0078ff;
+            color: white;
+        }
+
+        #projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 16px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            margin-bottom: 10px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            background: #0078ff;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-fav {
+            background: gold;
+        }
+
+        .btn-delete {
+            background: crimson;
+            color: white;
+        }
+
+        .favorito {
+            border: 3px solid gold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💼 Portfolio Dinámico</h1>
+
+    <!-- Buscador -->
+    <div class="top-bar">
+        <input 
+            type="text" 
+            id="search" 
+            placeholder="Buscar proyectos..."
+        />
+
+        <button class="filter-btn" data-tech="todos">Todos</button>
+        <button class="filter-btn" data-tech="HTML">HTML</button>
+        <button class="filter-btn" data-tech="CSS">CSS</button>
+        <button class="filter-btn" data-tech="JavaScript">JavaScript</button>
+    </div>
+
+    <!-- Formulario -->
+    <form id="project-form">
+
+        <input 
+            type="text" 
+            id="titulo" 
+            placeholder="Título"
+            required
+        />
+
+        <input 
+            type="text" 
+            id="descripcion" 
+            placeholder="Descripción"
+        />
+
+        <input 
+            type="text" 
+            id="tecnologias" 
+            placeholder="HTML,CSS,JavaScript"
+        />
+
+        <input 
+            type="text" 
+            id="imagen" 
+            placeholder="URL imagen"
+        />
+
+        <button type="submit">
+            Añadir Proyecto
+        </button>
+
+    </form>
+
+    <!-- Contenedor -->
+    <section id="projects-container"></section>
+
+    <script>
+
+        // =========================
+        // DATOS
+        // =========================
+
+        let proyectos = [
+            {
+                id: 1,
+                titulo: "Portfolio Personal",
+                descripcion: "Portfolio responsive con HTML y CSS",
+                tecnologias: ["HTML", "CSS"],
+                imagen: "https://picsum.photos/500/300?random=1",
+                esFavorito: false
+            },
+            {
+                id: 2,
+                titulo: "Lista de Tareas",
+                descripcion: "Aplicación dinámica con JavaScript",
+                tecnologias: ["HTML", "CSS", "JavaScript"],
+                imagen: "https://picsum.photos/500/300?random=2",
+                esFavorito: true
+            }
+        ];
+
+        // =========================
+        // RENDERIZAR PROYECTOS
+        // =========================
+
+        function renderizarProyectos(lista = proyectos) {
+
+            const container = document.getElementById("projects-container");
+
+            container.innerHTML = "";
+
+            lista.forEach(proyecto => {
+
+                const card = document.createElement("article");
+
+                card.className = proyecto.esFavorito
+                    ? "project-card favorito"
+                    : "project-card";
+
+                card.innerHTML = `
+                    <img src="${proyecto.imagen}" alt="${proyecto.titulo}">
+
+                    <div class="project-content">
+
+                        <h3>${proyecto.titulo}</h3>
+
+                        <p>${proyecto.descripcion}</p>
+
+                        <div class="tech-list">
+                            ${proyecto.tecnologias.map(tech =>
+                                `<span class="tag">${tech}</span>`
+                            ).join("")}
+                        </div>
+
+                        <div class="card-actions">
+                            <button 
+                                class="btn-fav"
+                                onclick="toggleFavorito(${proyecto.id})"
+                            >
+                                ${proyecto.esFavorito ? "★ Favorito" : "☆ Favorito"}
+                            </button>
+
+                            <button 
+                                class="btn-delete"
+                                onclick="eliminarProyecto(${proyecto.id})"
+                            >
+                                Eliminar
+                            </button>
+                        </div>
+
+                    </div>
+                `;
+
+                container.appendChild(card);
+
+            });
+        }
+
+        // =========================
+        // AÑADIR PROYECTO
+        // =========================
+
+        document
+            .getElementById("project-form")
+            .addEventListener("submit", (e) => {
+
+                e.preventDefault();
+
+                const nuevoProyecto = {
+
+                    id: Date.now(),
+
+                    titulo: document.getElementById("titulo").value,
+
+                    descripcion: document.getElementById("descripcion").value,
+
+                    tecnologias: document
+                        .getElementById("tecnologias")
+                        .value
+                        .split(","),
+
+                    imagen:
+                        document.getElementById("imagen").value ||
+                        "https://picsum.photos/500/300",
+
+                    esFavorito: false
+                };
+
+                proyectos.push(nuevoProyecto);
+
+                guardarEnLocalStorage();
+
+                renderizarProyectos();
+
+                e.target.reset();
+            });
+
+        // =========================
+        // ELIMINAR PROYECTO
+        // =========================
+
+        function eliminarProyecto(id) {
+
+            proyectos = proyectos.filter(
+                proyecto => proyecto.id !== id
+            );
+
+            guardarEnLocalStorage();
+
+            renderizarProyectos();
+        }
+
+        // =========================
+        // FAVORITOS
+        // =========================
+
+        function toggleFavorito(id) {
+
+            const proyecto = proyectos.find(
+                proyecto => proyecto.id === id
+            );
+
+            proyecto.esFavorito = !proyecto.esFavorito;
+
+            guardarEnLocalStorage();
+
+            renderizarProyectos();
+        }
+
+        // =========================
+        // FILTROS
+        // =========================
+
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(btn => {
+
+                btn.addEventListener("click", (e) => {
+
+                    const tech = e.target.dataset.tech;
+
+                    const filtrados =
+                        tech === "todos"
+                            ? proyectos
+                            : proyectos.filter(proyecto =>
+                                proyecto.tecnologias.includes(tech)
+                            );
+
+                    renderizarProyectos(filtrados);
+                });
+
+            });
+
+        // =========================
+        // BUSCADOR
+        // =========================
+
+        document
+            .getElementById("search")
+            .addEventListener("input", (e) => {
+
+                const texto = e.target.value.toLowerCase();
+
+                const resultados = proyectos.filter(proyecto =>
+                    proyecto.titulo.toLowerCase().includes(texto)
+                );
+
+                renderizarProyectos(resultados);
+            });
+
+        // =========================
+        // LOCAL STORAGE
+        // =========================
+
+        function guardarEnLocalStorage() {
+
+            localStorage.setItem(
+                "proyectos",
+                JSON.stringify(proyectos)
+            );
+        }
+
+        function cargarDeLocalStorage() {
+
+            const guardado = localStorage.getItem("proyectos");
+
+            if (guardado) {
+
+                proyectos = JSON.parse(guardado);
+            }
+        }
+
+        // =========================
+        // INICIALIZAR
+        // =========================
+
+        cargarDeLocalStorage();
+
+        renderizarProyectos();
+
+    </script>
+
+</body>
+</html>

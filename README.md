@@ -35,6 +35,7 @@ Clase XX - Nombre del Tema/
 | 03 | CSS Avanzado (Layouts) | 07/05/2026 | ✅ |
 | 04 | CSS Responsive y JavaScript Intro | 11/05/2026 | ✅ |
 | 05 | JavaScript Fundamentos | 12/05/2026 | ✅ |
+| 06 | JavaScript DOM y Eventos | 13/05/2026 | ✅ |
 
 ## 🚀 Cómo Usar Este Repositorio
 
