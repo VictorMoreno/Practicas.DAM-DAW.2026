@@ -38,6 +38,7 @@ Clase XX - Nombre del Tema/
 | 05 | JavaScript Fundamentos | 12/05/2026 | ✅ |
 | 06 | JavaScript DOM y Eventos | 13/05/2026 | ✅ |
 | 07 | JavaScript APIs y Asincronía | 14/05/2026 | ✅ |
+| 08 | React Fundamentos | 18/05/2026 |  |
 
 ## 📹 Información de videos
 
