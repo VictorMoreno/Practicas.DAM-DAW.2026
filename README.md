@@ -39,7 +39,7 @@ Clase XX - Nombre del Tema/
 | 06 | JavaScript DOM y Eventos | 13/05/2026 | ✅ |
 | 07 | JavaScript APIs y Asincronía | 14/05/2026 | ✅ |
 | 08 | React Fundamentos | 18/05/2026 | ✅ |
-| 08 | React Estado y Hooks | 19/05/2026 |  |
+| 09 | React Estado y Hooks | 19/05/2026 |  |
 
 ## 📹 Información de videos
 
